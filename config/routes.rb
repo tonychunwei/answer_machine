@@ -1,6 +1,7 @@
 AnswerMachine::Application.routes.draw do
   get "sentences/hello"
   get "sentences/call"
+  post "sentences/callback"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
