@@ -1,5 +1,6 @@
 class SentencesController < ApplicationController
   def hello
-    render :xml => {:result => "OK"}
+    @Saying = {:Say => "hello tony!"}
+    render :xml => {:Response => @Saying}
   end
 end
