@@ -2,7 +2,9 @@ class SentencesController < ApplicationController
   def hello
     @Response = {:Say => "hello tony!"}
     render :xml =>  @Response.to_xml(:root => 'Response')
-    
+  end
+  
+  def call
     require 'rubygems'
     require 'twilio-ruby'
 
@@ -12,9 +14,8 @@ class SentencesController < ApplicationController
     # set up a client to talk to the Twilio REST API
     @client = Twilio::REST::Client.new(@account_sid, @auth_token)
 
-
     @account = @client.account
-    @call = @account.calls.create({:from => '+16505427153', :to => '6508620477'})
+    @call = @account.calls.create({:from => '+16505427153', :to => '6508620477', :url => 'http://answer-machine-v1.herokuapp.com/sentences/hello'})
     puts @call
   end
 end
